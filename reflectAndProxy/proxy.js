@@ -7,7 +7,7 @@ const p1 = {
 //proxy takes in object reference and a handler function as inputs
 const p1Proxy = new Proxy(p1, {
   get(target, prop) {
-    if (prop in target) return target[prop];
+    if (prop in target) return Reflect.get(target, prop);
     return false;
   },
   set(target, prop, value) {
@@ -23,9 +23,6 @@ const p1Proxy = new Proxy(p1, {
           throw new Error(`${prop} must be a number `);
         if (value <= 0) throw new Error(`${prop} must be greater than zero`);
     }
-    target[prop] = value;
+    Reflect.set(target, prop, value);
   },
 });
-
-p1Proxy.age = 1;
-console.log(p1Proxy.age);
