@@ -1,4 +1,4 @@
-Array.prototype.filter = function (cb, thisArg) {
+Array.prototype.Myfilter = function (cb, thisArg) {
   if (typeof cb !== "function") {
     throw new TypeError(callback + " is not a function");
   }
